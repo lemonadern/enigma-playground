@@ -1,10 +1,12 @@
-import { Button } from "@chakra-ui/react"
-import { greet } from "../../wasm/pkg/wasm"
+import { Button } from "@chakra-ui/react";
+import { greet } from "../../wasm/pkg/wasm";
+import { Header } from "./Header";
 
 export const Main = () => {
-    return(
-        <div>
-            <Button onClick={() => greet()}>Greet</Button>
-        </div>
-    )
-}
+  return (
+    <div>
+      <Header />
+      <Button onClick={() => greet()}>Greet</Button>
+    </div>
+  );
+};
