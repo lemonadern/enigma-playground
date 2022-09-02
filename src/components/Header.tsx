@@ -3,45 +3,44 @@ import { greet } from "../../wasm/pkg/wasm";
 
 export const Header = () => {
   return (
-    <Box role={"banner"}>
-      <Flex
-        bg={"gray.50"}
-        minH={"40px"}
-        paddingY={"2"}
-        paddingX={"6"}
-        borderBottom={1}
-        borderStyle={"solid"}
-        borderColor={"gray.200"}
-        align={"center"}
-      >
-        <Flex flex={{ base: 1 }} justify={"start"}>
-          <Heading
-            as={"h2"}
-            textAlign={"left"}
-            fontFamily={"heading"}
-            color={"gray.800"}
-            size={"md"}
-          >
-            Navbar
-          </Heading>
-        </Flex>
-
-        <Stack flex={0} justify={"flex-end"} direction={"row"} spacing={6}>
-          <Button
-            onClick={() => greet()}
-            display={"inline-flex"}
-            fontSize={"sm"}
-            fontWeight={600}
-            color={"white"}
-            bg={"green.400"}
-            _hover={{
-              bg: "green.300",
-            }}
-          >
-            Greet
-          </Button>
-        </Stack>
+    <Flex
+      as={"nav"}
+      bg={"gray.50"}
+      minH={"40px"}
+      paddingY={"2"}
+      paddingX={"6"}
+      borderBottom={1}
+      borderStyle={"solid"}
+      borderColor={"gray.200"}
+      align={"center"}
+    >
+      <Flex flex={{ base: 1 }} justify={"start"}>
+        <Heading
+          as={"h2"}
+          textAlign={"left"}
+          fontFamily={"heading"}
+          color={"gray.800"}
+          size={"md"}
+        >
+          Navbar
+        </Heading>
       </Flex>
-    </Box>
+
+      <Stack flex={0} justify={"flex-end"} direction={"row"} spacing={6}>
+        <Button
+          onClick={() => greet()}
+          display={"inline-flex"}
+          fontSize={"sm"}
+          fontWeight={600}
+          color={"white"}
+          bg={"green.400"}
+          _hover={{
+            bg: "green.300",
+          }}
+        >
+          Greet
+        </Button>
+      </Stack>
+    </Flex>
   );
 };
