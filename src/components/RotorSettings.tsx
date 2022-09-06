@@ -3,10 +3,10 @@ import { rotors } from "@/constants/rotors";
 import { Grid, Select, Text } from "@chakra-ui/react";
 
 type Props = {
-  rotorName: string;
+  indexOfRotor: number;
 };
 
-export const RotorSettings = ({ rotorName }: Props) => {
+export const RotorSettings = ({ indexOfRotor: index }: Props) => {
   return (
     <Grid templateColumns={"1fr 6fr 3fr"} placeItems={"center"} gap={4}>
       <Text
@@ -15,7 +15,7 @@ export const RotorSettings = ({ rotorName }: Props) => {
         fontWeight={"bold"}
         textAlign={"center"}
       >
-        {rotorName}
+        Rotor{index + 1}
       </Text>
       <Select variant={"filled"}>
         {rotors.map((rotor) => (

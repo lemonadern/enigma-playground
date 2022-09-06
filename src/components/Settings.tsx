@@ -1,15 +1,17 @@
+import { rotors } from "@/constants/rotors";
 import { QuestionIcon } from "@chakra-ui/icons";
 import {
   Accordion,
   AccordionButton,
   AccordionItem,
   AccordionPanel,
+  Stack,
   Text,
   Tooltip,
   VStack,
 } from "@chakra-ui/react";
-import { PlugBoardSettingsContainer } from "../PlugBoardSettingsContainer";
-import { RotorSettingContainer } from "./RotorSettingContainer";
+import { PlugBoardSettings } from "./PlugBoardSettings";
+import { RotorSettings } from "./RotorSettings";
 
 export const Settings = () => {
   return (
@@ -36,7 +38,11 @@ export const Settings = () => {
             </Text>
           </AccordionButton>
           <AccordionPanel>
-            <RotorSettingContainer />
+            <VStack gap={4}>
+              {rotors.map((rotor, i) => (
+                <RotorSettings key={rotor.name} indexOfRotor={i} />
+              ))}
+            </VStack>
           </AccordionPanel>
         </AccordionItem>
 
@@ -55,7 +61,15 @@ export const Settings = () => {
             </Text>
           </AccordionButton>
           <AccordionPanel>
-            <PlugBoardSettingsContainer />
+            <Stack
+              direction={["column", "row"]}
+              gap={{ md: 16, sm: 8 }}
+              placeContent={"center"}
+            >
+              <PlugBoardSettings defaultWiring={["A", "B"]} />
+              <PlugBoardSettings defaultWiring={["C", "D"]} />
+              <PlugBoardSettings defaultWiring={["E", "F"]} />
+            </Stack>
           </AccordionPanel>
         </AccordionItem>
       </Accordion>

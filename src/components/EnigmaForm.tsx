@@ -19,7 +19,7 @@ export const EnigmaForm = ({ onSubmit }: Props) => {
       <VStack placeItems={"center"} gap={8} marginTop={8}>
         <VStack width={{ base: "100%", sm: "55%" }} placeItems={"center"}>
           <FormLabel htmlFor="text-area" fontWeight={"semibold"}>
-            String to be encrypted
+            Input
           </FormLabel>
           <Textarea
             id="text-area"

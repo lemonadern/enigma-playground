@@ -16,7 +16,7 @@ export const EncryptedOutput = ({ encryptedText }: Props) => {
         borderRadius={"md"}
         border={"1px solid"}
         borderColor={"gray.300"}
-        width={{ base: "100%", sm: "70%" }}
+        width={{ base: "100%", sm: "55%" }}
         marginX={"auto"}
         fontSize={"large"}
         padding={8}

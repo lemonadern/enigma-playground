@@ -1,6 +1,5 @@
 import { keys } from "@/constants/keys";
 import { PlugBoardWiring } from "@/constants/types";
-import { numberToAlphabet } from "@/utils/numberToAlphabet";
 import { RepeatIcon } from "@chakra-ui/icons";
 import { Grid, Select } from "@chakra-ui/react";
 
@@ -11,7 +10,7 @@ type Props = {
 export const PlugBoardSettings = ({ defaultWiring: [left, right] }: Props) => {
   return (
     <Grid templateColumns={"2fr 1fr 2fr"} placeItems={"center"} gap={2}>
-      <Select defaultValue={numberToAlphabet(left)} variant={"filled"}>
+      <Select defaultValue={left} variant={"filled"}>
         {keys.map((key) => (
           <option key={key} value={key}>
             {key}
@@ -19,7 +18,7 @@ export const PlugBoardSettings = ({ defaultWiring: [left, right] }: Props) => {
         ))}
       </Select>
       <RepeatIcon />
-      <Select defaultValue={numberToAlphabet(right)} variant={"filled"}>
+      <Select defaultValue={right} variant={"filled"}>
         {keys.map((key) => (
           <option key={key} value={key}>
             {key}
