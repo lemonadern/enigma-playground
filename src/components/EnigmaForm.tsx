@@ -1,7 +1,11 @@
 import { usePlugBoardWiringsState } from "@/states/plugBoardWiringsState";
+import { useRotorInitialPositionsState } from "@/states/rotorInitialPositionsState";
+import { useRotorWiringsState } from "@/states/rotorWiringsState";
+import { alphabetToBigInt } from "@/utils/alphabetToBigInt";
 import { duplicatedElementExists } from "@/utils/duplicatedElementExists";
 import { Button, FormLabel, Text, Textarea, VStack } from "@chakra-ui/react";
 import { FormEvent, useCallback, useState } from "react";
+import { enigma_encrypt_with_settings_inline } from "../../enigma/pkg";
 
 type Props = {
   onSubmit: (text: string) => void;
@@ -10,12 +14,42 @@ type Props = {
 export const EnigmaForm = ({ onSubmit }: Props) => {
   const [text, setText] = useState("hello, world! enigma!!!!");
   const [plugBoardWirings] = usePlugBoardWiringsState();
+  const [rotorWirings] = useRotorWiringsState();
+  const [rotorPositions] = useRotorInitialPositionsState();
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(text);
-    onSubmit(text);
-    console.log("submit");
+
+    const r1 = rotorWirings[0].toLowerCase();
+    const r2 = rotorWirings[1].toLowerCase();
+    const r3 = rotorWirings[2].toLowerCase();
+    const k1 = alphabetToBigInt(rotorPositions[0].toLowerCase());
+    const k2 = alphabetToBigInt(rotorPositions[1].toLowerCase());
+    const k3 = alphabetToBigInt(rotorPositions[2].toLowerCase());
+
+    const p1_l = alphabetToBigInt(plugBoardWirings[0][0].toLowerCase());
+    const p1_r = alphabetToBigInt(plugBoardWirings[0][1].toLowerCase());
+    const p2_l = alphabetToBigInt(plugBoardWirings[1][0].toLowerCase());
+    const p2_r = alphabetToBigInt(plugBoardWirings[1][1].toLowerCase());
+    const p3_l = alphabetToBigInt(plugBoardWirings[2][0].toLowerCase());
+    const p3_r = alphabetToBigInt(plugBoardWirings[2][1].toLowerCase());
+
+    const result = enigma_encrypt_with_settings_inline(
+      r1,
+      r2,
+      r3,
+      k1,
+      k2,
+      k3,
+      p1_l,
+      p1_r,
+      p2_l,
+      p2_r,
+      p3_l,
+      p3_r,
+      text
+    );
+    onSubmit(result);
   };
 
   const hasError = useCallback(() => {
@@ -51,7 +85,6 @@ export const EnigmaForm = ({ onSubmit }: Props) => {
             暗号化できません。設定を確認してください。
           </Text>
         )}
-        <p>{plugBoardWirings.flat()}</p>
       </VStack>
     </form>
   );

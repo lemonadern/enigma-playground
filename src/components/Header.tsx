@@ -27,7 +27,7 @@ export const Header = () => {
         </Heading>
       </Flex>
 
-      <Stack flex={0} justify={"flex-end"} direction={"row"} spacing={6}>
+      {/* <Stack flex={0} justify={"flex-end"} direction={"row"} spacing={6}>
         <Button
           onClick={() => greet()}
           display={"inline-flex"}
@@ -41,7 +41,7 @@ export const Header = () => {
         >
           Greet
         </Button>
-      </Stack>
+      </Stack> */}
     </Flex>
   );
 };
