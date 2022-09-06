@@ -8,9 +8,9 @@ export const PlugBoardSettingsContainer = () => {
       gap={{ md: 16, sm: 8 }}
       placeContent={"center"}
     >
-      <PlugBoardSettings />
-      <PlugBoardSettings />
-      <PlugBoardSettings />
+      <PlugBoardSettings defaultWiring={[0, 1]} />
+      <PlugBoardSettings defaultWiring={[2, 3]} />
+      <PlugBoardSettings defaultWiring={[4, 5]} />
     </Stack>
   );
 };

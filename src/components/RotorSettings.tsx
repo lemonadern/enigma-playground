@@ -1,27 +1,35 @@
+import { keys } from "@/constants/keys";
+import { rotors } from "@/constants/rotors";
 import { Grid, Select, Text } from "@chakra-ui/react";
 
-export const RotorSettings = () => {
+type Props = {
+  rotorName: string;
+};
+
+export const RotorSettings = ({ rotorName }: Props) => {
   return (
-    <Grid templateColumns={"1fr 6fr 2fr"} placeItems={"center"} gap={4}>
+    <Grid templateColumns={"1fr 6fr 3fr"} placeItems={"center"} gap={4}>
       <Text
         as={"h3"}
         fontSize={"medium"}
         fontWeight={"bold"}
         textAlign={"center"}
       >
-        Rotor1
+        {rotorName}
       </Text>
-      <Select placeholder="Select wiring" variant={"filled"}>
-        <option value="option1">ABCDEFGHIJKLMNOPQRSTUVWXYZ</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
+      <Select variant={"filled"}>
+        {rotors.map((rotor) => (
+          <option key={rotor.name} value={rotor.wiring}>
+            {rotor.name}: {rotor.wiring}
+          </option>
+        ))}
       </Select>
-      <Select placeholder="Select a Key" variant={"filled"}>
-        <option value="option1">1</option>
-        <option value="option2">2</option>
-        <option value="option3">3</option>
-        <option value="option4">4</option>
-        <option value="option5">5</option>
+      <Select variant={"filled"}>
+        {keys.map((key) => (
+          <option key={key} value={key}>
+            {key}
+          </option>
+        ))}
       </Select>
     </Grid>
   );
