@@ -5,7 +5,7 @@ import { MainContent } from "./MainContent";
 
 export const Page = () => {
   return (
-    <Flex flexDirection={"column"} minHeight={"100vh"}>
+    <Flex flexDirection={"column"} minHeight={"100vh"} paddingBottom={16}>
       <Header />
       <MainContent />
       {/* <Button onClick={() => greet()}>Greet</Button> */}

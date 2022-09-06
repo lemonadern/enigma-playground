@@ -1,4 +1,4 @@
-import { Flex, Text, Button, Stack, Heading } from "@chakra-ui/react";
+import { Flex, Button, Stack, Heading } from "@chakra-ui/react";
 import { greet } from "../../wasm/pkg/wasm";
 
 export const Header = () => {
@@ -23,7 +23,7 @@ export const Header = () => {
           color={"gray.800"}
           size={"md"}
         >
-          Navbar
+          Enigma Simulator
         </Heading>
       </Flex>
 
