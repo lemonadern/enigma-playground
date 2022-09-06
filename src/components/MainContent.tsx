@@ -1,9 +1,3 @@
-import { rotors } from "@/constants/rotors";
-import {
-  PlugBoardSettings,
-  PlugBoardWiring,
-  RotorSettings,
-} from "@/constants/types";
 import { Box } from "@chakra-ui/react";
 import { useState } from "react";
 import { EncryptedOutput } from "./EncryptedOutput";

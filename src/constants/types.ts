@@ -1,1 +1,4 @@
-export type PlugBoardWiring = [number, number];
+export type RotorWirings = string[];
+export type RotorInitialPositions = string[];
+
+export type PlugBoardWiring = [string, string];

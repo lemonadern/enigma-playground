@@ -3,6 +3,7 @@ import "./App.css";
 import init from "../wasm/pkg";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Page } from "./components/Page";
+import { RecoilRoot } from "recoil";
 
 function App() {
   useEffect(() => {
@@ -11,7 +12,9 @@ function App() {
 
   return (
     <ChakraProvider>
-      <Page />
+      <RecoilRoot>
+        <Page />
+      </RecoilRoot>
     </ChakraProvider>
   );
 }
