@@ -1,12 +1,13 @@
-import { Box, Flex, Text, Button, Stack, Heading } from "@chakra-ui/react";
+import { Flex, Text, Button, Stack, Heading } from "@chakra-ui/react";
 import { greet } from "../../wasm/pkg/wasm";
 
 export const Header = () => {
   return (
     <Flex
-      as={"nav"}
+      as={"header"}
       bg={"gray.50"}
       minH={"40px"}
+      flexShrink={"1"}
       paddingY={"2"}
       paddingX={"6"}
       borderBottom={1}

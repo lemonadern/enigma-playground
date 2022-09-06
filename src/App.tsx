@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import init from "../wasm/pkg";
 import { ChakraProvider } from "@chakra-ui/react";
-import { Main } from "./components/Main";
+import { Page } from "./components/Page";
 
 function App() {
   useEffect(() => {
@@ -11,7 +11,7 @@ function App() {
 
   return (
     <ChakraProvider>
-      <Main />
+      <Page />
     </ChakraProvider>
   );
 }
