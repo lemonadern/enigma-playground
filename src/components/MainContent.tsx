@@ -1,3 +1,4 @@
+import { usePlugBoardWiringsState } from "@/states/plugBoardWiringsState";
 import { Box } from "@chakra-ui/react";
 import { useState } from "react";
 import { EncryptedOutput } from "./EncryptedOutput";
@@ -11,11 +12,14 @@ export const MainContent = () => {
     setEncryptedText(text);
   };
 
+  const [plugBoardWiring] = usePlugBoardWiringsState();
+
   return (
     <Box as={"main"} width={"90%"} marginX={"auto"}>
       <EnigmaForm onSubmit={handleSubmit} />
       <EncryptedOutput encryptedText={encryptedText} />
       <Settings />
+      {plugBoardWiring.flat().join(" ")}
     </Box>
   );
 };

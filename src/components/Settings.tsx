@@ -66,9 +66,18 @@ export const Settings = () => {
               gap={{ md: 16, sm: 8 }}
               placeContent={"center"}
             >
-              <PlugBoardSettings defaultWiring={["A", "B"]} />
-              <PlugBoardSettings defaultWiring={["C", "D"]} />
-              <PlugBoardSettings defaultWiring={["E", "F"]} />
+              <PlugBoardSettings
+                indexOfPlugBoard={0}
+                defaultWiring={["A", "B"]}
+              />
+              <PlugBoardSettings
+                indexOfPlugBoard={1}
+                defaultWiring={["C", "D"]}
+              />
+              <PlugBoardSettings
+                indexOfPlugBoard={2}
+                defaultWiring={["E", "F"]}
+              />
             </Stack>
           </AccordionPanel>
         </AccordionItem>
