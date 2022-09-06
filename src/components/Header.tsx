@@ -1,14 +1,12 @@
-import { Flex, Button, Stack, Heading } from "@chakra-ui/react";
-import { greet } from "../../wasm/pkg/wasm";
+import { Flex, Heading } from "@chakra-ui/react";
 
 export const Header = () => {
   return (
     <Flex
       as={"header"}
       bg={"gray.50"}
-      minH={"40px"}
       flexShrink={"1"}
-      paddingY={"2"}
+      paddingY={"4"}
       paddingX={"6"}
       borderBottom={1}
       borderStyle={"solid"}
@@ -28,19 +26,9 @@ export const Header = () => {
       </Flex>
 
       {/* <Stack flex={0} justify={"flex-end"} direction={"row"} spacing={6}>
-        <Button
-          onClick={() => greet()}
-          display={"inline-flex"}
-          fontSize={"sm"}
-          fontWeight={600}
-          color={"white"}
-          bg={"green.400"}
-          _hover={{
-            bg: "green.300",
-          }}
-        >
-          Greet
-        </Button>
+        <Link display={"inline-flex"} fontSize={"sm"} wordBreak={"unset"}>
+          作者のTwitter
+        </Link>
       </Stack> */}
     </Flex>
   );
