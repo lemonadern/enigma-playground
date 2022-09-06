@@ -12,14 +12,11 @@ export const MainContent = () => {
     setEncryptedText(text);
   };
 
-  const [plugBoardWiring] = usePlugBoardWiringsState();
-
   return (
     <Box as={"main"} width={"90%"} marginX={"auto"}>
       <EnigmaForm onSubmit={handleSubmit} />
       <EncryptedOutput encryptedText={encryptedText} />
       <Settings />
-      {plugBoardWiring.flat().join(" ")}
     </Box>
   );
 };
