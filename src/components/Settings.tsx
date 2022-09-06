@@ -1,5 +1,7 @@
 import { rotors } from "@/constants/rotors";
-import { QuestionIcon } from "@chakra-ui/icons";
+import { usePlugBoardWiringsState } from "@/states/plugBoardWiringsState";
+import { duplicatedElementExists } from "@/utils/duplicatedElementExists";
+import { QuestionIcon, WarningTwoIcon } from "@chakra-ui/icons";
 import {
   Accordion,
   AccordionButton,
@@ -10,10 +12,16 @@ import {
   Tooltip,
   VStack,
 } from "@chakra-ui/react";
+import { useCallback } from "react";
 import { PlugBoardSettings } from "./PlugBoardSettings";
 import { RotorSettings } from "./RotorSettings";
 
 export const Settings = () => {
+  const [plugBoardWirings] = usePlugBoardWiringsState();
+  const hasDuplicateWiring = useCallback(() => {
+    return duplicatedElementExists(plugBoardWirings.flat());
+  }, [plugBoardWirings]);
+
   return (
     <VStack as={"section"} paddingTop={8}>
       <Accordion
@@ -58,27 +66,35 @@ export const Settings = () => {
               >
                 <QuestionIcon />
               </Tooltip>
+              {hasDuplicateWiring() && (
+                <Text color={"tomato"} fontWeight="semibold">
+                  <WarningTwoIcon />
+                  キーに重複があります
+                </Text>
+              )}
             </Text>
           </AccordionButton>
           <AccordionPanel>
-            <Stack
-              direction={["column", "row"]}
-              gap={{ md: 16, sm: 8 }}
-              placeContent={"center"}
-            >
-              <PlugBoardSettings
-                indexOfPlugBoard={0}
-                defaultWiring={["A", "B"]}
-              />
-              <PlugBoardSettings
-                indexOfPlugBoard={1}
-                defaultWiring={["C", "D"]}
-              />
-              <PlugBoardSettings
-                indexOfPlugBoard={2}
-                defaultWiring={["E", "F"]}
-              />
-            </Stack>
+            <VStack gap={4}>
+              <Stack
+                direction={["column", "row"]}
+                gap={{ md: 16, sm: 8 }}
+                placeContent={"center"}
+              >
+                <PlugBoardSettings
+                  indexOfPlugBoard={0}
+                  defaultWiring={["A", "B"]}
+                />
+                <PlugBoardSettings
+                  indexOfPlugBoard={1}
+                  defaultWiring={["C", "D"]}
+                />
+                <PlugBoardSettings
+                  indexOfPlugBoard={2}
+                  defaultWiring={["E", "F"]}
+                />
+              </Stack>
+            </VStack>
           </AccordionPanel>
         </AccordionItem>
       </Accordion>

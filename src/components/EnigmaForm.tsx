@@ -1,5 +1,7 @@
-import { Button, FormLabel, Textarea, VStack } from "@chakra-ui/react";
-import { FormEvent, useState } from "react";
+import { usePlugBoardWiringsState } from "@/states/plugBoardWiringsState";
+import { duplicatedElementExists } from "@/utils/duplicatedElementExists";
+import { Button, FormLabel, Text, Textarea, VStack } from "@chakra-ui/react";
+import { FormEvent, useCallback, useState } from "react";
 
 type Props = {
   onSubmit: (text: string) => void;
@@ -7,6 +9,7 @@ type Props = {
 
 export const EnigmaForm = ({ onSubmit }: Props) => {
   const [text, setText] = useState("hello, world! enigma!!!!");
+  const [plugBoardWirings] = usePlugBoardWiringsState();
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -14,12 +17,17 @@ export const EnigmaForm = ({ onSubmit }: Props) => {
     onSubmit(text);
     console.log("submit");
   };
+
+  const hasError = useCallback(() => {
+    return duplicatedElementExists(plugBoardWirings.flat());
+  }, [plugBoardWirings]);
+
   return (
     <form action="" onSubmit={handleSubmit}>
       <VStack placeItems={"center"} gap={8} marginTop={8}>
         <VStack width={{ base: "100%", sm: "55%" }} placeItems={"center"}>
           <FormLabel htmlFor="text-area" fontWeight={"semibold"}>
-            Input
+            Input (※アルファベット小文字のみ暗号化されます)
           </FormLabel>
           <Textarea
             id="text-area"
@@ -28,16 +36,22 @@ export const EnigmaForm = ({ onSubmit }: Props) => {
             defaultValue={text}
             onChange={(e) => setText(e.target.value)}
           ></Textarea>
-          {/* todo: 受け入れ可能文字列の表示 */}
         </VStack>
         <Button
           type={"submit"}
           bgColor={"green.400"}
           color={"white"}
           _hover={{ bg: "green.300" }}
+          disabled={duplicatedElementExists(plugBoardWirings.flat())}
         >
           Encrypt!
         </Button>
+        {hasError() && (
+          <Text color={"tomato"}>
+            暗号化できません。設定を確認してください。
+          </Text>
+        )}
+        <p>{plugBoardWirings.flat()}</p>
       </VStack>
     </form>
   );
