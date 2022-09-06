@@ -1,5 +1,4 @@
-import { Button, Flex } from "@chakra-ui/react";
-import { greet } from "../../wasm/pkg/wasm";
+import { Flex } from "@chakra-ui/react";
 import { Header } from "./Header";
 import { MainContent } from "./MainContent";
 
