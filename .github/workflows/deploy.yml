@@ -12,8 +12,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      
+      - name: Checkout repository and submodule
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+         
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.4.1
         with:
